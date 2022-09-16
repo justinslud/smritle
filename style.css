@@ -4,7 +4,7 @@
   }
   
   body {
-    background-color: rgba(200,233,252,255); /*hsl(240, 3%, 7%);*/
+    background-color: rgba(200,233,252,255);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -15,14 +15,15 @@
   
   .keyboard {
     display: grid;
-    grid-template-columns: repeat(20, minmax(auto, 1.25em));
-    grid-auto-rows: 3em;
+    grid-template-columns: repeat(20, minmax(auto, 5em));
+    grid-auto-rows: 7em;
     gap: .25em;
     justify-content: center;
   }
   
   .key {
-    font-size: inherit;
+    font-size: inherit * 2;
+    /* font-weight: ; */
     grid-column: span 2;
     border: none;
     padding: 0;
@@ -60,8 +61,10 @@
     justify-content: center;
     align-content: center;
     flex-grow: 1;
-    grid-template-columns: repeat(var(--column), 4em);
-    grid-template-rows: repeat(var(--column) + 1, 4em);
+    grid-template-columns: 
+      repeat(var(--column), calc(95% / var(--column)));
+    grid-template-rows: 
+      repeat(var(--column)+1, calc(95% / var(--column)));
     gap: .25em;
     margin-bottom: 1em;
   }
@@ -70,16 +73,19 @@
     display: grid;
     justify-content: center;
     align-content: center;
-    /* flex-grow: 1; */
-    grid-template-columns: repeat(5, 5em);
-    grid-template-rows: repeat(1, 4em);
+    flex-grow: 1;
+    grid-template-columns: repeat(5, 3em);
+    grid-template-rows: repeat(1, 3em);
     gap: .25em;
     margin-bottom: 1em;
   }
   
   .tile {
-    font-size: 2em;
-    color: grey;/*white;*/
+    font-size: 500%;
+    font-stretch: extra-condensed;
+    display: inline-block;
+    white-space: nowrap;
+    color: grey;
     border: .05em solid hsl(240, 2%, 23%);
     text-transform: uppercase;
     font-weight: bold;
@@ -102,6 +108,10 @@
   .tile[data-state="correct"] {
     border: none;
     background-color: #E3FAD8;
+  }
+
+  .guess-row .tile {
+    font-size: 200%;
   }
   
   .tile.shake {
@@ -202,7 +212,8 @@
   h1 {
     text-align: center;
     color: grey;
-
+    margin-left: 20px;
+    padding-bottom: none;
   }
 
   /* popup */
@@ -215,6 +226,7 @@
   position:fixed;
   text-align:center;
   top:0;
+  left: 0;
   width:100%;
   z-index:10000;
 }
@@ -236,6 +248,12 @@
   border-radius: 8px;
   padding: 15px 5%;
 }
+
+#popupContent {
+  max-width: 80%;
+  width: 80%;
+}
+
 .popupCloseButton {
   background-color: #fff;
   border: 3px solid #999;
@@ -258,15 +276,13 @@
 }
 .trigger_popup_fricc {
   cursor: pointer;
-  font-size: 20px;
+  font-size: 2em;
   font-weight: bold;
-}
-
-a {
   color: grey;
 }
 
-.popup-buttons .a {
+
+.popup-buttons .top-row {
   display: inline-block;
 }
 
