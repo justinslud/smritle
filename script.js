@@ -279,11 +279,19 @@ function danceTiles(tiles) {
   })
 }
 
-document.querySelectorAll(".trigger_popup_fricc").forEach(item => {
-  item.addEventListener('click', event => {
-    item.nextElementSibling.style.display = "block"
-  })
-})
+// document.querySelectorAll(".trigger_popup_fricc").forEach(item => {
+//   item.addEventListener('click', event => {
+//     item.nextElementSibling.style.display = "block"
+//   })
+// })
+
+document.querySelector(".trigger_popup_fricc").addEventListener('click', event => {
+  document.querySelector(".trigger_popup_fricc").nextElementSibling.style.display = "block"
+});
+
+document.querySelector("#statsLink").addEventListener('click', event => {
+  displayStats()
+});
 
 document.querySelectorAll(".hover_bkgr_fricc").forEach(item => {
   item.addEventListener('click', event => {
