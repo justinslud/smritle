@@ -67,6 +67,7 @@
       repeat(var(--column)+1, calc(95% / var(--column)));
     gap: .25em;
     margin-bottom: 1em;
+    padding-bottom: 1em;
   }
 
   .guess-row {
