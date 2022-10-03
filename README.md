@@ -1,4 +1,4 @@
-[smritle](smritle.com)
+[smritle](https://smritle.com)
 
 # Resources
 
