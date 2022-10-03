@@ -230,12 +230,14 @@ function checkWinLose(guess, tiles) {
     localStorage.setItem("score", WORD_LENGTH + 1 - (remainingTiles.length / WORD_LENGTH))
     streak = localStorage.getItem("streak") || 0
 
-    if (dayOffset - lastPlayed == 1) {
+    if (dayOffset - lastPlayed == 1 || lastPlayed == 0) {
       localStorage.setItem("streak", Number(streak) + 1)
     }
 
     if (dayOffset - lastPlayed >= 1) {
       localStorage.setItem("lastWin", dayOffset)
+      // 
+      localStorage.setItem("streak", 1)
     }
 
     setTimeout(() => {
