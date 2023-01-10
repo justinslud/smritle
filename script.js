@@ -45,35 +45,6 @@ function stopInteraction() {
   document.removeEventListener("keydown", handleKeyPress)
 }
 
-
-function displayStats() {
-  score = localStorage.getItem("score")
-
-  topScore = Number(localStorage.getItem("topScore"+String(WORD_LENGTH))) || "-"
-
-  if ( lastPlayed != dayOffset && score !== "-" && (score < topScore || topScore === "-")) {
-    localStorage.setItem("topScore"+String(WORD_LENGTH), score)
-  }
-
-  topScore4 = Number(localStorage.getItem("topScore4")) || "-"
-  topScore5 = Number(localStorage.getItem("topScore5")) || "-"
-  topScore6 = Number(localStorage.getItem("topScore6")) || "-"
-  streak = Number(localStorage.getItem("streak")) || 0
-  maxStreak = Number(localStorage.getItem("maxStreak")) || 0
-
-  if (streak >= maxStreak) {
-    maxStreak = streak
-    localStorage.setItem("maxStreak", maxStreak)
-  }
-
-  document.getElementById("score").innerHTML = score
-  document.getElementById("topScore").innerHTML = " 4 &#58; "+ topScore4 + "<br>5 &#58; " + topScore5 + "<br>6 &#58; " + topScore6; 
-  document.getElementById("streak").innerHTML = streak
-  document.getElementById("maxStreak").innerHTML = maxStreak  
-
-  document.getElementById("statsContent").style.display = "block"
-}
-
 function handleMouseClick(e) {
   if (e.target.matches("[data-key]")) {
     pressKey(e.target.dataset.key)
@@ -224,46 +195,17 @@ function checkWinLose(guess, tiles) {
   if (guess === targetWord) {
     showAlert("You Win", 5000)
     danceTiles(tiles)
-    localStorage.setItem("score", WORD_LENGTH + 1 - (remainingTiles.length / WORD_LENGTH))
-    streak = localStorage.getItem("streak") || 0
-
-    // increment streak
-    if (dayOffset - lastPlayed == 1 || lastPlayed == 0) {
-      localStorage.setItem("streak", Number(streak) + 1)
-    }
-
-    // reset streak
-    else if (dayOffset - lastPlayed >= 1) {
-      localStorage.setItem("streak", 1)
-    }
-
-    // update lastWin
-    localStorage.setItem("lastWin", dayOffset)
-
-    setTimeout(() => {
-      displayStats()
-    }, 2000);
-
+  
     stopInteraction()
     
     return
   }
 
   if (remainingTiles.length === 0) {
-    
-    // reset streak
-    if (lastPlayed != dayOffset) {
-      localStorage.setItem("streak", 0)
-    }
 
     localStorage.setItem("score", "-")
     showAlert(targetWord.toUpperCase(), null)
-    setTimeout(() => {
-      displayStats()
-    }, 2000);
     stopInteraction()
-
-    localStorage.setItem("lastPlayed", dayOffset)
   }
 }
 
@@ -286,14 +228,8 @@ document.querySelector(".trigger_popup_fricc").addEventListener('click', event =
   document.querySelector(".trigger_popup_fricc").nextElementSibling.style.display = "block"
 });
 
-document.querySelector("#statsLink").addEventListener('click', event => {
-  displayStats()
-});
-
 document.querySelectorAll(".hover_bkgr_fricc").forEach(item => {
   item.addEventListener('click', event => {
     item.style.display = "none"
   })
 })
-
-statsLink = document.querySelector("#statsLink")
