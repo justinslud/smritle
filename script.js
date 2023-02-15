@@ -54,7 +54,7 @@ const gifLinks = {
   'pillow': '', 
   'pins': 'https://media2.giphy.com/media/yoJC2ElACT9uejhvYk/giphy.webp?cid=ecf05e47unxn4fo3cithacsfko7p5ksnpszb42zkov5reve2&rid=giphy.webp&ct=g', 
   'grammy': 'https://media4.giphy.com/media/Qxl6LilXMNIejsNFaz/200w.webp?cid=ecf05e470ukxvicqmqac2heqczs3zfjufioiavmh239vw28k&rid=200w.webp&ct=g', 
-  'just': '', 
+  'just': 'https://media3.giphy.com/media/1JV4c3dkjtmgO042ev/giphy360p.mp4?cid=ecf05e47jmdb84nvt3lizootva66q6uxipvdw5laqwfyyyma&rid=giphy360p.mp4&ct=v&cc=en', 
   'lizard': 'https://media4.giphy.com/media/RvI14EGq8CWHu/giphy.webp?cid=ecf05e47f7xiq7o9vaonpqxdf9x29hghps59thrgo3mlqah4&rid=giphy.webp&ct=g', 
   'grill': 'https://media3.giphy.com/media/UIzvs2EGJQO9q/200w.webp?cid=ecf05e47qpzvc30hlji84flr2lx3dnhg6zvjbzz4qdxkf3jv&rid=200w.webp&ct=g',
   'share': 'https://media2.giphy.com/media/l2Je2UwHVePmc7Xr2/200.webp?cid=ecf05e473rn4zwp1tfktpc4tysayw2ssp1aju4zg0rzskieg&rid=200.webp&ct=g', 
